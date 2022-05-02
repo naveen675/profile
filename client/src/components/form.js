@@ -39,8 +39,10 @@ function Form(props) {
 
 
     const SendFormData = () => {fetch(`/api/create/developer/`, requestOptions)
-      .then((response) => {return response.json()}).then(() => {setPostReqComplete(true)}).then(() => {
+      .then((response) => {return response}).then(() => {setPostReqComplete(true)}).then(() => {
+          
           DeveloperAdded();
+          
           });
         // console.log(` git : ${githubId} linkedin:${linkedinId} codechef: ${codechefId} hackerran: ${hackerrankId} tritter: ${twiterId} medium: ${mediumId}`);
 }

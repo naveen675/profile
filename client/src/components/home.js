@@ -8,6 +8,7 @@ function Home(props) {
 
   const [developers,setDevelopers] = useState([]);
   const [NewDeveloperAdded,setNewDeveloperAdded] = useState(false);
+  const [searchWord,setSearchWord] = useState('');
 
   const DeveloperAdded = () => {
     setNewDeveloperAdded(true);
@@ -16,6 +17,25 @@ function Home(props) {
   const HandleClick = (status) => {
     setIsAddDevClicked(status);
 
+  }
+
+  const HandleChange = (event) => {
+
+    var word = event.target.value;
+    if(word === ''){
+      fetchAvailableDevelopers();
+    }
+
+    setSearchWord(word);
+    var newDevelopers = [];
+    
+    newDevelopers = developers.filter((developer) => {
+      return (developer['id'].startsWith(word));
+    })
+
+    setDevelopers(newDevelopers);
+      
+    
   }
 
     const fetchAvailableDevelopers = () => {
@@ -35,7 +55,7 @@ function Home(props) {
   const[isAddDevClicked, setIsAddDevClicked] = useState(false);
   return (
       <React.Fragment>
-        <input type='text' className='searchBox' />
+        <input type='text' className='searchBox' value={searchWord} onChange={(event) => {HandleChange(event)}} />
       <Developers developers={developers}/>
       <button onClick={() => {HandleClick(true)}} className='addDevBtn'>Add Profile</button>
       {isAddDevClicked && <Form  DeveloperAdded={DeveloperAdded} HandleClick={HandleClick}/>}
