@@ -2,24 +2,11 @@ import React, { useEffect, useState } from 'react'
 import {useNavigate} from 'react-router-dom';
 
 
-function Developers() {
+function Developers(props) {
     
     const navigate = useNavigate();
 
-    const [developers,setDevelopers] = useState([]);
-
-    const fetchAvailableDevelopers = () => {
-        fetch('/api/list/developers').then(
-            (response) => {return response.json()}
-        ).then(
-            (data) => { setDevelopers(data) }
-        )
-    };
-
-
-    useEffect(() => {
-        fetchAvailableDevelopers();
-    },[])
+    const developers = props.developers
 
 
   return (

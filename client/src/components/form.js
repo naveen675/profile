@@ -1,10 +1,12 @@
 import React,{useState} from 'react'
 
 
-function Form() {
+function Form(props) {
 
 
-
+    const DeveloperAdded = props.DeveloperAdded;
+    const HandleClick = props.HandleClick;
+  
     const [githubId, setGitId] = useState("");
     const [linkedinId, setLinkedinId] =useState("");
     const [codechefId, setCodechefId] = useState("");
@@ -17,6 +19,7 @@ function Form() {
     const HandleSubmit = (e) => {
 
         e.preventDefault();
+
 
         var data = {
       "github_id": githubId,
@@ -36,7 +39,9 @@ function Form() {
 
 
     const SendFormData = () => {fetch(`/api/create/developer/`, requestOptions)
-      .then((response) => {return response.json()}).then(() => {setPostReqComplete(true)});
+      .then((response) => {return response.json()}).then(() => {setPostReqComplete(true)}).then(() => {
+          DeveloperAdded();
+          });
         // console.log(` git : ${githubId} linkedin:${linkedinId} codechef: ${codechefId} hackerran: ${hackerrankId} tritter: ${twiterId} medium: ${mediumId}`);
 }
 
