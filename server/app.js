@@ -238,7 +238,9 @@ db.connect(url,connectionParams).then(
     var twitter_id = data["twitter_id"];
     var medium_id = data["medium_id"];
 
-    data = fetch(`https://api.github.com/users/${git_id}`).then(
+    
+
+    data =  fetch(`https://api.github.com/users/${git_id}`).then(
         (response) => {return response.json();}
     ).then(
         (data) => {
@@ -292,7 +294,7 @@ db.connect(url,connectionParams).then(
                         github_id : temp["github_id"],
                         linkedin_id : temp["linkedin_id"],
                         codechef_id : temp["codechef_id"],
-                        hackerrank_id : temp["hackerrabk_id"],
+                        hackerrank_id : temp["hackerrank_id"],
                         twitter_id : temp["twitter_id"],
                         medium_id : temp["medium_id"],
                         repos : temp["repos"]
@@ -327,6 +329,16 @@ db.connect(url,connectionParams).then(
         const id = req.params['id'];
 
         const data = devInfo.findOne({'id':`${id}`}).then((data) => {res.send(data)});
+    });
+
+    app.get("/api/test/:id", (req,res) => {
+
+    
+
+        const id = req.params['id'];
+
+        const data = devInfo.findOne({'id':`${id}`}).then((data) => {res.send(data)});
+        console.log(data);
     });
     });
 
