@@ -1,9 +1,10 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const app = express();
 dotenv.config();
 const devInfo = require('./models/devInfo')
 const { json } = require('express/lib/response');
-const app = express();
+
 const db = require('mongoose')
 const port = process.env.PORT || 3001;
 const fetch = require("node-fetch");
