@@ -3,7 +3,6 @@ import React, { useState,useEffect} from 'react';
 import Form from './form';
 import Head from './head';
 import SearchIcon from '../Images/Icons/Icon/search-24px.svg';
-import Footer from './footer';
 //import {Developers} from './developers';
 
 function Home(props) {
@@ -11,7 +10,6 @@ function Home(props) {
 
   const [developers,setDevelopers] = useState([]);
   const [NewDeveloperAdded,setNewDeveloperAdded] = useState(false);
-  const [prevWordLength, setPrevWordLength] = useState(Number.MAX_VALUE);
   const [searchWord,setSearchWord] = useState('');
 
   const DeveloperAdded = () => {
@@ -25,26 +23,16 @@ function Home(props) {
 
   const WordMatch = (event) => {
 
-    var word = event.target.value;
-    var len = word.length;
-    // console.log(`len :${len}`);
-    // console.log(`prevword :${prevWordLength}`);
-    if(word === ''){
+    if(searchWord === ''){
 
       fetchAvailableDevelopers();
     }
 
-    
-    // if(word === ''){
-    //   fetchAvailableDevelopers();
-    // }
-
-    setSearchWord(word);
     var newDevelopers = [];
     // console.log(word);
 
     newDevelopers = developers.filter((developer) => {
-      return (developer['id'].startsWith(word));
+      return (developer['id'].toLocaleLowerCase().startsWith(searchWord.toLocaleLowerCase()));
     })
 
     setDevelopers(newDevelopers);
@@ -75,8 +63,8 @@ function Home(props) {
           <hr></hr>
         </div>
         <div className='search'>
-          <input type='text' className='searchBox' placeholder='Search For Developer' value={searchWord} onChange={(event) => {WordMatch(event)}} />
-          <button className='searchBtn'><img src={SearchIcon} alt="search" /></button> 
+          <input type='text' className='searchBox' placeholder='Search For Developer' value={searchWord} onChange={(event) => {setSearchWord(event.target.value)}}  />
+          <button className='searchBtn' onClick={() => {WordMatch()}}><img src={SearchIcon} alt="search" /></button> 
         </div>
       <Developers developers={developers}/>
       <hr></hr>

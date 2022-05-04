@@ -78,8 +78,8 @@
   margin-top: 2%;
   margin-bottom: 100px;
   height: 2.5rem;
-  width: 35%;
-  margin-left: 35%;
+  width: 45%;
+  margin-left: 40%;
   background-color: #d0cde1;
   border-radius: 5px;
   border: 0;
@@ -100,16 +100,19 @@
   margin-top: 4px;
 }
 
-.search button{
+.search .searchBtn{
 
   height: 80%;
   width: 20%;
   margin-top: 4px;
   border: 0;
-  padding-left: 2px;
+ 
   background-color: #d0cde1;
 }
 
+.search input{
+  width: 80%;
+}
 .developers{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -168,8 +171,15 @@ p {
 }
 
 .devAddform{
-  margin-top: 5%;
-  margin-left: 30%;
+  position: absolute;
+  text-align: center;
+  background-color: #ecebf1;
+  top: 450px;
+  margin-left: 10%;
+  padding: 10px;
+  border-radius: 10px;
+  height: 55%;
+  width: 80%;
 }
 .devAddform img {
   height: 1em;
@@ -272,10 +282,24 @@ p {
 footer {
   font-family: "Nunito Sans", sans-serif;
   background-color: #3f3d56;
-  margin-bottom: -8%;
-  bottom: 0;
+  margin-top: 90%;
 }
 
 footer p {
   color: white;
+}
+
+.error {
+  text-align: center;
+}
+.error button{
+
+  border : 0;
+  height: 1.5em;
+  width: 22%;
+  margin : 2%;
+  background-color: #7c639f;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
 }
