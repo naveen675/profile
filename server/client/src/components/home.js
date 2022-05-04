@@ -23,10 +23,15 @@ function Home(props) {
 
   const WordMatch = (event) => {
 
+    setSearchWord(event.target.value);
+
+    
     if(searchWord === ''){
 
       fetchAvailableDevelopers();
     }
+
+    
 
     var newDevelopers = [];
     // console.log(word);
@@ -63,8 +68,8 @@ function Home(props) {
           <hr></hr>
         </div>
         <div className='search'>
-          <input type='text' className='searchBox' placeholder='Search For Developer' value={searchWord} onChange={(event) => {setSearchWord(event.target.value)}}  />
-          <button className='searchBtn' onClick={() => {WordMatch()}}><img src={SearchIcon} alt="search" /></button> 
+          <input type='text' className='searchBox' placeholder='Search For Developer' value={searchWord} onChange={(event) => {setSearchWord(event.target.value)}} />
+          <button className='searchBtn' onClick={(event) => {WordMatch(event)}} ><img src={SearchIcon} alt="search" /></button> 
         </div>
       <Developers developers={developers}/>
       <hr></hr>

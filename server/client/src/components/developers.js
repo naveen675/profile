@@ -14,10 +14,12 @@ function Developers(props) {
   return (
     <div className='developers' >
         {
+            
             developers.map((developer,index) => {
                 const {id, avatar_url} = developer;
 
                 return(
+
                     <div className ="item" key={index}>
 
                        <div className='subItem'> <img src={avatar_url} className='developerImage' alt={ProfileIcon} /></div>

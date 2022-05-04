@@ -39,8 +39,8 @@
 
 .header{
 
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: space-evenly;
   background-color: #2f2e41;
 
 }
@@ -79,7 +79,7 @@
   margin-bottom: 100px;
   height: 2.5rem;
   width: 45%;
-  margin-left: 40%;
+  margin-left: 35%;
   background-color: #d0cde1;
   border-radius: 5px;
   border: 0;
@@ -125,6 +125,7 @@
 .developers img{
   height: 2em;
   width: 2em;
+  padding-left: 2px;
   border-radius: 25px;
 }
 
@@ -140,15 +141,16 @@
   border: 0;
 
 }
-.developers .item .subItem{
+/* .developers .item .subItem{
   height: 4em;
-}
+} */
 .developers .item{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-items: stretch;
-  
-  
+  display: flex;
+  justify-items: stretch;  
+}
+.developers .item img{
+  margin-top: 10px;
+  margin-right: 10px;
 }
 
 .addDevBtn{
@@ -280,7 +282,7 @@ p {
 }
 
 footer {
-  position:relative;
+  position:sticky;
   bottom: 0;
   width: 100%;
   font-family: "Nunito Sans", sans-serif;
@@ -292,6 +294,7 @@ footer p {
 }
 
 .error {
+  height: 100%;
   text-align: center;
 }
 .error button{
